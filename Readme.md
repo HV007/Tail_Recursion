@@ -1,4 +1,5 @@
 # Source-to-Source Automatic Conversion to Tail Recursion
+This program transforms recursive definitions in a SML program to their tail recursive variant automatically, without changing the semantics. Tail recursive functions are shown to be faster and consume less memory, thus improving the overall performance.
 
 ## Prerequisites
 1. SML
