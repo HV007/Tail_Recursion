@@ -1,0 +1,1085 @@
+34 shift/reduce conflicts
+
+error:  state 38: shift/reduce conflict (shift ASSIGN, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift TIMES, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift XOR, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift ORELSE, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift ANDALSO, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift GREATERTHAN, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift LESSTHAN, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift DIV, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift SUB, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift ADD, reduce by rule 39)
+error:  state 63: shift/reduce conflict (shift ASSIGN, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift TIMES, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift XOR, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift ORELSE, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift ANDALSO, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift GREATERTHAN, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift LESSTHAN, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift DIV, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift SUB, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift ADD, reduce by rule 38)
+error:  state 66: shift/reduce conflict (shift TIMES, reduce by rule 37)
+error:  state 67: shift/reduce conflict (shift TIMES, reduce by rule 35)
+error:  state 68: shift/reduce conflict (shift TIMES, reduce by rule 43)
+error:  state 77: shift/reduce conflict (shift ASSIGN, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift TIMES, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift XOR, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift ORELSE, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift ANDALSO, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift GREATERTHAN, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift LESSTHAN, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift DIV, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift SUB, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift ADD, reduce by rule 40)
+error:  state 78: shift/reduce conflict (shift TIMES, reduce by rule 41)
+
+state 0:
+
+	PROGRAM : . DATATYPEDECLARATION FUNCTIONDECLARATIONLIST 
+	PROGRAM : . FUNCTIONDECLARATIONLIST 
+
+	FUN	shift 5
+	DATATYPE	shift 4
+
+	FUNCTIONDECLARATION	goto 3
+	FUNCTIONDECLARATIONLIST	goto 2
+	DATATYPEDECLARATION	goto 1
+	PROGRAM	goto 79
+
+	.	error
+
+
+state 1:
+
+	PROGRAM : DATATYPEDECLARATION . FUNCTIONDECLARATIONLIST 
+
+	FUN	shift 5
+
+	FUNCTIONDECLARATION	goto 3
+	FUNCTIONDECLARATIONLIST	goto 6
+
+	.	error
+
+
+state 2:
+
+	FUNCTIONDECLARATIONLIST : FUNCTIONDECLARATIONLIST . FUNCTIONDECLARATION 
+	PROGRAM : FUNCTIONDECLARATIONLIST .  (reduce by rule 1)
+
+	FUN	shift 5
+
+	FUNCTIONDECLARATION	goto 7
+
+	.	reduce by rule 1
+
+
+state 3:
+
+	FUNCTIONDECLARATIONLIST : FUNCTIONDECLARATION .  (reduce by rule 12)
+
+
+
+	.	reduce by rule 12
+
+
+state 4:
+
+	DATATYPEDECLARATION : DATATYPE . DATATYPEDEFINITIONLIST 
+
+	ID	shift 10
+
+	DATATYPEDEFINITION	goto 9
+	DATATYPEDEFINITIONLIST	goto 8
+
+	.	error
+
+
+state 5:
+
+	FUNCTIONDECLARATION : FUN . FUNCTIONLIST 
+
+	ID	shift 14
+
+	REWRITE	goto 13
+	FUNCTION	goto 12
+	FUNCTIONLIST	goto 11
+
+	.	error
+
+
+state 6:
+
+	FUNCTIONDECLARATIONLIST : FUNCTIONDECLARATIONLIST . FUNCTIONDECLARATION 
+	PROGRAM : DATATYPEDECLARATION FUNCTIONDECLARATIONLIST .  (reduce by rule 0)
+
+	FUN	shift 5
+
+	FUNCTIONDECLARATION	goto 7
+
+	.	reduce by rule 0
+
+
+state 7:
+
+	FUNCTIONDECLARATIONLIST : FUNCTIONDECLARATIONLIST FUNCTIONDECLARATION .  (reduce by rule 13)
+
+
+
+	.	reduce by rule 13
+
+
+state 8:
+
+	DATATYPEDEFINITIONLIST : DATATYPEDEFINITIONLIST . AND DATATYPEDEFINITION 
+	DATATYPEDECLARATION : DATATYPE DATATYPEDEFINITIONLIST .  (reduce by rule 2)
+
+	AND	shift 15
+
+
+	.	reduce by rule 2
+
+
+state 9:
+
+	DATATYPEDEFINITIONLIST : DATATYPEDEFINITION .  (reduce by rule 4)
+
+
+
+	.	reduce by rule 4
+
+
+state 10:
+
+	DATATYPEDEFINITION : ID . ASSIGN CONSTRUCTORLIST 
+
+	ASSIGN	shift 16
+
+
+	.	error
+
+
+state 11:
+
+	FUNCTIONLIST : FUNCTIONLIST . AND FUNCTION 
+	FUNCTIONDECLARATION : FUN FUNCTIONLIST .  (reduce by rule 14)
+
+	AND	shift 17
+
+
+	.	reduce by rule 14
+
+
+state 12:
+
+	FUNCTION : FUNCTION . BAR REWRITE 
+	FUNCTIONLIST : FUNCTION .  (reduce by rule 16)
+
+	BAR	shift 18
+
+
+	.	reduce by rule 16
+
+
+state 13:
+
+	FUNCTION : REWRITE .  (reduce by rule 18)
+
+
+
+	.	reduce by rule 18
+
+
+state 14:
+
+	REWRITE : ID . LPAREN ARGUMENTLIST RPAREN ASSIGN EXPRESSION 
+
+	LPAREN	shift 19
+
+
+	.	error
+
+
+state 15:
+
+	DATATYPEDEFINITIONLIST : DATATYPEDEFINITIONLIST AND . DATATYPEDEFINITION 
+
+	ID	shift 10
+
+	DATATYPEDEFINITION	goto 20
+
+	.	error
+
+
+state 16:
+
+	DATATYPEDEFINITION : ID ASSIGN . CONSTRUCTORLIST 
+
+	ID	shift 23
+
+	CONSTRUCTOR	goto 22
+	CONSTRUCTORLIST	goto 21
+
+	.	error
+
+
+state 17:
+
+	FUNCTIONLIST : FUNCTIONLIST AND . FUNCTION 
+
+	ID	shift 14
+
+	REWRITE	goto 13
+	FUNCTION	goto 24
+
+	.	error
+
+
+state 18:
+
+	FUNCTION : FUNCTION BAR . REWRITE 
+
+	ID	shift 14
+
+	REWRITE	goto 25
+
+	.	error
+
+
+state 19:
+
+	REWRITE : ID LPAREN . ARGUMENTLIST RPAREN ASSIGN EXPRESSION 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 28
+	ARGUMENTLIST	goto 27
+	UNOP	goto 26
+
+	.	error
+
+
+state 20:
+
+	DATATYPEDEFINITIONLIST : DATATYPEDEFINITIONLIST AND DATATYPEDEFINITION .  (reduce by rule 3)
+
+
+
+	.	reduce by rule 3
+
+
+state 21:
+
+	CONSTRUCTORLIST : CONSTRUCTORLIST . BAR CONSTRUCTOR 
+	DATATYPEDEFINITION : ID ASSIGN CONSTRUCTORLIST .  (reduce by rule 5)
+
+	BAR	shift 36
+
+
+	.	reduce by rule 5
+
+
+state 22:
+
+	CONSTRUCTORLIST : CONSTRUCTOR .  (reduce by rule 7)
+
+
+
+	.	reduce by rule 7
+
+
+state 23:
+
+	CONSTRUCTOR : ID . OF TYPELIST 
+	CONSTRUCTOR : ID .  (reduce by rule 9)
+
+	OF	shift 37
+
+
+	.	reduce by rule 9
+
+
+state 24:
+
+	FUNCTION : FUNCTION . BAR REWRITE 
+	FUNCTIONLIST : FUNCTIONLIST AND FUNCTION .  (reduce by rule 15)
+
+	BAR	shift 18
+
+
+	.	reduce by rule 15
+
+
+state 25:
+
+	FUNCTION : FUNCTION BAR REWRITE .  (reduce by rule 17)
+
+
+
+	.	reduce by rule 17
+
+
+state 26:
+
+	EXPRESSION : UNOP . EXPRESSION 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 38
+	UNOP	goto 26
+
+	.	error
+
+
+state 27:
+
+	ARGUMENTLIST : ARGUMENTLIST . COMMA EXPRESSION 
+	REWRITE : ID LPAREN ARGUMENTLIST . RPAREN ASSIGN EXPRESSION 
+
+	RPAREN	shift 40
+	COMMA	shift 39
+
+
+	.	error
+
+
+state 28:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	ARGUMENTLIST : EXPRESSION .  (reduce by rule 21)
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	reduce by rule 21
+
+
+state 29:
+
+	EXPRESSION : LPAREN . EXPRESSION RPAREN 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 52
+	UNOP	goto 26
+
+	.	error
+
+
+state 30:
+
+	EXPRESSION : IF . EXPRESSION THEN EXPRESSION ELSE EXPRESSION 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 53
+	UNOP	goto 26
+
+	.	error
+
+
+state 31:
+
+	UNOP : NOT .  (reduce by rule 33)
+
+
+
+	.	reduce by rule 33
+
+
+state 32:
+
+	UNOP : NEGATE .  (reduce by rule 32)
+
+
+
+	.	reduce by rule 32
+
+
+state 33:
+
+	EXPRESSION : CONST .  (reduce by rule 36)
+	EXPRESSION : CONST . COLON TYPELIST 
+
+	COLON	shift 54
+
+
+	.	reduce by rule 36
+
+
+state 34:
+
+	EXPRESSION : NUM .  (reduce by rule 34)
+	EXPRESSION : NUM . COLON TYPELIST 
+
+	COLON	shift 55
+
+
+	.	reduce by rule 34
+
+
+state 35:
+
+	EXPRESSION : ID . LPAREN ARGUMENTLIST RPAREN COLON TYPELIST 
+	EXPRESSION : ID . LPAREN ARGUMENTLIST RPAREN 
+	EXPRESSION : ID . COLON TYPELIST 
+	EXPRESSION : ID .  (reduce by rule 44)
+
+	LPAREN	shift 57
+	COLON	shift 56
+
+
+	.	reduce by rule 44
+
+
+state 36:
+
+	CONSTRUCTORLIST : CONSTRUCTORLIST BAR . CONSTRUCTOR 
+
+	ID	shift 23
+
+	CONSTRUCTOR	goto 58
+
+	.	error
+
+
+state 37:
+
+	CONSTRUCTOR : ID OF . TYPELIST 
+
+	ID	shift 60
+
+	TYPELIST	goto 59
+
+	.	error
+
+error:  state 38: shift/reduce conflict (shift ASSIGN, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift TIMES, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift XOR, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift ORELSE, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift ANDALSO, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift GREATERTHAN, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift LESSTHAN, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift DIV, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift SUB, reduce by rule 39)
+error:  state 38: shift/reduce conflict (shift ADD, reduce by rule 39)
+
+state 38:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	EXPRESSION : UNOP EXPRESSION .  (reduce by rule 39)
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	reduce by rule 39
+
+
+state 39:
+
+	ARGUMENTLIST : ARGUMENTLIST COMMA . EXPRESSION 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 61
+	UNOP	goto 26
+
+	.	error
+
+
+state 40:
+
+	REWRITE : ID LPAREN ARGUMENTLIST RPAREN . ASSIGN EXPRESSION 
+
+	ASSIGN	shift 62
+
+
+	.	error
+
+
+state 41:
+
+	EXPRESSION : EXPRESSION BINOP . EXPRESSION 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 63
+	UNOP	goto 26
+
+	.	error
+
+
+state 42:
+
+	BINOP : ASSIGN .  (reduce by rule 26)
+
+
+
+	.	reduce by rule 26
+
+
+state 43:
+
+	BINOP : TIMES .  (reduce by rule 24)
+
+
+
+	.	reduce by rule 24
+
+
+state 44:
+
+	BINOP : XOR .  (reduce by rule 31)
+
+
+
+	.	reduce by rule 31
+
+
+state 45:
+
+	BINOP : ORELSE .  (reduce by rule 30)
+
+
+
+	.	reduce by rule 30
+
+
+state 46:
+
+	BINOP : ANDALSO .  (reduce by rule 29)
+
+
+
+	.	reduce by rule 29
+
+
+state 47:
+
+	BINOP : GREATERTHAN .  (reduce by rule 28)
+
+
+
+	.	reduce by rule 28
+
+
+state 48:
+
+	BINOP : LESSTHAN .  (reduce by rule 27)
+
+
+
+	.	reduce by rule 27
+
+
+state 49:
+
+	BINOP : DIV .  (reduce by rule 25)
+
+
+
+	.	reduce by rule 25
+
+
+state 50:
+
+	BINOP : SUB .  (reduce by rule 23)
+
+
+
+	.	reduce by rule 23
+
+
+state 51:
+
+	BINOP : ADD .  (reduce by rule 22)
+
+
+
+	.	reduce by rule 22
+
+
+state 52:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	EXPRESSION : LPAREN EXPRESSION . RPAREN 
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	RPAREN	shift 64
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	error
+
+
+state 53:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	EXPRESSION : IF EXPRESSION . THEN EXPRESSION ELSE EXPRESSION 
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	THEN	shift 65
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	error
+
+
+state 54:
+
+	EXPRESSION : CONST COLON . TYPELIST 
+
+	ID	shift 60
+
+	TYPELIST	goto 66
+
+	.	error
+
+
+state 55:
+
+	EXPRESSION : NUM COLON . TYPELIST 
+
+	ID	shift 60
+
+	TYPELIST	goto 67
+
+	.	error
+
+
+state 56:
+
+	EXPRESSION : ID COLON . TYPELIST 
+
+	ID	shift 60
+
+	TYPELIST	goto 68
+
+	.	error
+
+
+state 57:
+
+	EXPRESSION : ID LPAREN . ARGUMENTLIST RPAREN COLON TYPELIST 
+	EXPRESSION : ID LPAREN . ARGUMENTLIST RPAREN 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 28
+	ARGUMENTLIST	goto 69
+	UNOP	goto 26
+
+	.	error
+
+
+state 58:
+
+	CONSTRUCTORLIST : CONSTRUCTORLIST BAR CONSTRUCTOR .  (reduce by rule 6)
+
+
+
+	.	reduce by rule 6
+
+
+state 59:
+
+	TYPELIST : TYPELIST . TIMES ID 
+	CONSTRUCTOR : ID OF TYPELIST .  (reduce by rule 8)
+
+	TIMES	shift 70
+
+
+	.	reduce by rule 8
+
+
+state 60:
+
+	TYPELIST : ID .  (reduce by rule 11)
+
+
+
+	.	reduce by rule 11
+
+
+state 61:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	ARGUMENTLIST : ARGUMENTLIST COMMA EXPRESSION .  (reduce by rule 20)
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	reduce by rule 20
+
+
+state 62:
+
+	REWRITE : ID LPAREN ARGUMENTLIST RPAREN ASSIGN . EXPRESSION 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 71
+	UNOP	goto 26
+
+	.	error
+
+error:  state 63: shift/reduce conflict (shift ASSIGN, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift TIMES, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift XOR, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift ORELSE, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift ANDALSO, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift GREATERTHAN, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift LESSTHAN, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift DIV, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift SUB, reduce by rule 38)
+error:  state 63: shift/reduce conflict (shift ADD, reduce by rule 38)
+
+state 63:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	EXPRESSION : EXPRESSION BINOP EXPRESSION .  (reduce by rule 38)
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	reduce by rule 38
+
+
+state 64:
+
+	EXPRESSION : LPAREN EXPRESSION RPAREN .  (reduce by rule 45)
+
+
+
+	.	reduce by rule 45
+
+
+state 65:
+
+	EXPRESSION : IF EXPRESSION THEN . EXPRESSION ELSE EXPRESSION 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 72
+	UNOP	goto 26
+
+	.	error
+
+error:  state 66: shift/reduce conflict (shift TIMES, reduce by rule 37)
+
+state 66:
+
+	EXPRESSION : CONST COLON TYPELIST .  (reduce by rule 37)
+	TYPELIST : TYPELIST . TIMES ID 
+
+	TIMES	shift 70
+
+
+	.	reduce by rule 37
+
+error:  state 67: shift/reduce conflict (shift TIMES, reduce by rule 35)
+
+state 67:
+
+	EXPRESSION : NUM COLON TYPELIST .  (reduce by rule 35)
+	TYPELIST : TYPELIST . TIMES ID 
+
+	TIMES	shift 70
+
+
+	.	reduce by rule 35
+
+error:  state 68: shift/reduce conflict (shift TIMES, reduce by rule 43)
+
+state 68:
+
+	EXPRESSION : ID COLON TYPELIST .  (reduce by rule 43)
+	TYPELIST : TYPELIST . TIMES ID 
+
+	TIMES	shift 70
+
+
+	.	reduce by rule 43
+
+
+state 69:
+
+	EXPRESSION : ID LPAREN ARGUMENTLIST . RPAREN COLON TYPELIST 
+	EXPRESSION : ID LPAREN ARGUMENTLIST . RPAREN 
+	ARGUMENTLIST : ARGUMENTLIST . COMMA EXPRESSION 
+
+	RPAREN	shift 73
+	COMMA	shift 39
+
+
+	.	error
+
+
+state 70:
+
+	TYPELIST : TYPELIST TIMES . ID 
+
+	ID	shift 74
+
+
+	.	error
+
+
+state 71:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	REWRITE : ID LPAREN ARGUMENTLIST RPAREN ASSIGN EXPRESSION .  (reduce by rule 19)
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	reduce by rule 19
+
+
+state 72:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	EXPRESSION : IF EXPRESSION THEN EXPRESSION . ELSE EXPRESSION 
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	ELSE	shift 75
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	error
+
+
+state 73:
+
+	EXPRESSION : ID LPAREN ARGUMENTLIST RPAREN . COLON TYPELIST 
+	EXPRESSION : ID LPAREN ARGUMENTLIST RPAREN .  (reduce by rule 42)
+
+	COLON	shift 76
+
+
+	.	reduce by rule 42
+
+
+state 74:
+
+	TYPELIST : TYPELIST TIMES ID .  (reduce by rule 10)
+
+
+
+	.	reduce by rule 10
+
+
+state 75:
+
+	EXPRESSION : IF EXPRESSION THEN EXPRESSION ELSE . EXPRESSION 
+
+	ID	shift 35
+	NUM	shift 34
+	CONST	shift 33
+	NEGATE	shift 32
+	NOT	shift 31
+	IF	shift 30
+	LPAREN	shift 29
+
+	EXPRESSION	goto 77
+	UNOP	goto 26
+
+	.	error
+
+
+state 76:
+
+	EXPRESSION : ID LPAREN ARGUMENTLIST RPAREN COLON . TYPELIST 
+
+	ID	shift 60
+
+	TYPELIST	goto 78
+
+	.	error
+
+error:  state 77: shift/reduce conflict (shift ASSIGN, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift TIMES, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift XOR, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift ORELSE, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift ANDALSO, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift GREATERTHAN, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift LESSTHAN, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift DIV, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift SUB, reduce by rule 40)
+error:  state 77: shift/reduce conflict (shift ADD, reduce by rule 40)
+
+state 77:
+
+	EXPRESSION : EXPRESSION . BINOP EXPRESSION 
+	EXPRESSION : IF EXPRESSION THEN EXPRESSION ELSE EXPRESSION .  (reduce by rule 40)
+
+	ADD	shift 51
+	SUB	shift 50
+	DIV	shift 49
+	LESSTHAN	shift 48
+	GREATERTHAN	shift 47
+	ANDALSO	shift 46
+	ORELSE	shift 45
+	XOR	shift 44
+	TIMES	shift 43
+	ASSIGN	shift 42
+
+	BINOP	goto 41
+
+	.	reduce by rule 40
+
+error:  state 78: shift/reduce conflict (shift TIMES, reduce by rule 41)
+
+state 78:
+
+	EXPRESSION : ID LPAREN ARGUMENTLIST RPAREN COLON TYPELIST .  (reduce by rule 41)
+	TYPELIST : TYPELIST . TIMES ID 
+
+	TIMES	shift 70
+
+
+	.	reduce by rule 41
+
+
+state 79:
+
+
+	EOF	accept
+
+
+	.	error
+
+134 of 285 action table entries left after compaction
+56 goto table entries

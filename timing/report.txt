@@ -1,0 +1,93 @@
+Constructor based Fib
+
+- time_it(Fib, 30);
+0.559 sec
+val it = () : unit
+- time_it(FibTR, 30);
+0.622 sec
+val it = () : unit
+- time_it(FibTR', 30);
+0.420 sec
+val it = () : unit
+- time_it(Fib, 32);
+2.184 sec
+val it = () : unit
+- time_it(FibTR, 32);
+1.720 sec
+val it = () : unit
+- time_it(FibTR', 32);
+1.663 sec
+val it = () : unit
+- time_it(Fib, 34);
+23.958 sec
+val it = () : unit
+- time_it(FibTR, 34);
+17.323 sec
+val it = () : unit
+- time_it(FibTR', 34);
+21.035 sec
+val it = () : unit
+- time_it(Fib, 36);
+281.167 sec
+val it = () : unit
+- time_it(FibTR, 36);
+183.646 sec
+val it = () : unit
+- time_it(FibTR', 36);
+403.681 sec
+
+Numeric based Fib
+
+- time_it(fib, 30);
+0.010 sec
+val it = () : unit
+- time_it(fibTR, 30);
+0.010 sec
+val it = () : unit
+- time_it(fibTR', 30);
+0.000 sec
+val it = () : unit
+- time_it(fib, 32);
+0.021 sec
+val it = () : unit
+- time_it(fibTR, 32);
+0.026 sec
+val it = () : unit
+- time_it(fibTR', 32);
+0.000 sec
+val it = () : unit
+- time_it(fib, 34);
+0.061 sec
+val it = () : unit
+- time_it(fibTR, 34);
+0.061 sec
+val it = () : unit
+- time_it(fibTR', 34);
+0.000 sec
+val it = () : unit
+- time_it(fib, 36);
+0.133 sec
+val it = () : unit
+- time_it(fibTR, 36);
+0.138 sec
+val it = () : unit
+- time_it(fibTR', 36);
+0.000 sec
+val it = () : unit
+- time_it(fib, 38);
+0.325 sec
+val it = () : unit
+- time_it(fibTR, 38);
+0.329 sec
+val it = () : unit
+- time_it(fibTR', 38);
+0.000 sec
+val it = () : unit
+- time_it(fib, 40);
+0.816 sec
+val it = () : unit
+- time_it(fibTR, 40);
+0.816 sec
+val it = () : unit
+- time_it(fibTR', 40);
+0.000 sec

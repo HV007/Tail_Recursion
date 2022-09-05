@@ -1,0 +1,20 @@
+Program ::= DatatypeDeclaration FunctionDeclarationList.
+DatatypeDeclaration ::= "datatype" DatatypeDefinition {"and" DatatypeDefinition}.
+FunctionDeclarationList ::= {FunctionDeclaration}.
+FunctionDeclaration ::= "fun" Function {"and" function}.
+
+DatatypeDefinition ::= Identifier "=" Constructor {"|" Constructor}.
+Constructor ::= Identifier | Identifier "of" Type.
+Type ::= Identifier {"*" Identifier}.
+
+Function ::= Rewrite {"|" Rewrite}.
+
+Rewrite ::= Identifier "(" Arguments ")" "=" ConstructorExpression.
+Arguments ::= ConstructorExpression {"," ConstructorExpression}.
+ConstructorExpression ::= Identifier "(" Arguments ")" [":" Type] | Identifier [":" Type].
+
+Expression ::= Num [":" Type] | Bool [":" Type] | Expression Binop Expression | Unop Expression | "(" Expression ")" |
+"if" Expression "then" Expression "else" Expression | Identifier "(" Arguments ")" [":" Type] | Identifier [":" Type].
+
+Binop ::= "+" | "-" | "*" | "/" | "=" | "<" | ">" | "andalso" | "orelse" | "^".
+Unop ::= "~" | "not".
